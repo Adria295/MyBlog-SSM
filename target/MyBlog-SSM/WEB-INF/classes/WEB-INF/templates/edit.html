@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/plugins/editor.md/css/editormd.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/plugins/selectize/css/selectize.bootstrap3.css">
+
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" type="text/css" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" type="text/css" href="/plugins/sweetalert2/sweetalert2.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" type="text/css" href="/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+
+</head>
+<body class="hold-transition layout-top-nav">
+
+
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-dark navbar-dark">
+        <div class="container-fluid pl-5 pr-5">
+            <a href="/admin" class="navbar-brand">
+                <img  class="brand-image img-circle elevation-3">
+                <span class="brand-text font-weight-light" >websiteTitle</span>
+            </a>
+
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/admin" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            仪表盘
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/adminBlog" class="nav-link">
+                            <i class="fa fa-list-alt nav-icon"></i>
+                            博客管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/adminCategory" class="nav-link">
+                            <i class="fa fa-bookmark nav-icon"></i>
+                            分类管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/adminTag" class="nav-link">
+                            <i class="fa fa-tags nav-icon"></i>
+                            标签管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/adminUser" class="nav-link">
+                            <i class="fa fa-user nav-icon"></i>
+                            用户管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/adminFile" class="nav-link">
+                            <i class="fas fa-file-code nav-icon"></i>
+                            文件管理
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+
+    <div class="container-fluid pl-5 pr-5 mt-3">
+        <form id="blogForm" action="/editContent" method="post">
+            <!-- /.card-body -->
+            <div class="card card-teal card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">博客信息</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label for="title" class="input-group-text">标题</label>
+                                    </div>
+                                    <!-- /btn-group -->
+                                    <input type="text" class="form-control" required id="title" name="title" placeholder="title(必填)...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label for="slug"
+                                               class="input-group-text"></label>
+                                    </div>
+                                    <!-- /btn-group -->
+                                    <input type="text"  class="form-control" id="slug" required name="slug"
+                                           placeholder="slug(必填)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- /.col -->
+                        <!-- /.col -->
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="blogThumb">文章缩略图直链</label>
+                                <input type="text" class="form-control" id="blogThumb" name="thumb"
+                                       placeholder="建议存储 OSS/JsDelivr....">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">博客描述</label>
+                                <textarea class="form-control" rows="3" id="description" name="description"
+                                          placeholder="主页显示的简要（必填）..."
+                                          maxlength="" style="resize:none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <button id="publishBtn" type="submit" class="btn btn-sm btn-success float-left">
+                                <i class="fa fa-edit"></i>
+                                发布
+                            </button>
+                            <a href="/adminTag" target="_blank" class="btn btn-sm btn-info float-left ml-1">
+                                <i class="fas fa fa-plus"></i>
+                                标签
+                            </a>
+                            <a href="/adminCategory" target="_blank" class="btn btn-sm btn-primary float-left ml-1">
+                                <i class="fa fa-plus"></i>
+                                分类
+                            </a>
+                        </div>
+
+                        <div class="col-md-1">
+                            <div class="icheck-success float-left">
+                                <input type="checkbox" id="blogContentOrder" name="contentOrder">
+                                <label for="blogContentOrder">推荐</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <select id="contentsstatus" name="contentStatus" style="width: 100%;">
+                                    <option selected value="publish">公开</option>
+                                    <option value="hidden">隐藏</option>
+                                    <option value="password">加密</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1" id="contentspassword-div" style="display: none;">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <label for="title" class="input-group-text">密码</label>
+                                    </div>
+                                    <!-- /btn-group -->
+                                    <input type="text" name="password" class="form-control" id="contentspassword"
+                                           maxlength="30">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+
+            <!-- /.card-body -->
+            <div id="editormd" class="form-group mb-3">
+                <textarea name="content"></textarea>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script type="text/javascript" src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+
+<!-- SweetAlert2 -->
+<script type="text/javascript" src="/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+<script type="text/javascript" src="/js/adminlte.min.js"></script>
+<script type="text/javascript" src="/plugins/editor.md/js/editormd.min.js"></script>
+
+<script type="text/javascript" src="/plugins/selectize/js/standalone/selectize.min.js"></script>
+
+<script type="text/javascript" src="/js/categoryinput.init.js"></script>
+
+<script type="text/javascript" src="/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+</body>
+</html>
