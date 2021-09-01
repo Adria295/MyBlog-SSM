@@ -29,7 +29,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/admin" class="nav-link">后台主页</a>
+                <a href="/user/admin" class="nav-link">后台主页</a>
             </li>
         </ul>
     </nav>
@@ -40,7 +40,7 @@
         <!-- Brand Logo -->
         <h1>
             <a href="/index" class="brand-link">
-                <img src="" class="brand-image img-circle elevation-3">
+                <img src="/img/fuuk.jpg" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light" >William's Blog</span>
             </a>
         </h1>
@@ -52,7 +52,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">PART 1</li>
                     <li class="nav-item">
-                        <a class="nav-link active">
+                        <a class="nav-link active" href="index">
                             <i class="fa fa-home nav-icon"></i>
                             <p>首页</p>
                         </a>
@@ -101,6 +101,7 @@
 
                             <div class="block-thumb" th:each="content:${contentList}">
                                 <div class="card-body bg-hover-gray">
+                                    <a th:href="'/articles/' + ${content.getSlug()}">
                                     <p>
                                     <div class="block-thumb2" style="background-image: url('/img/code2.jpg')" >
                                         <div class="overlaya">
@@ -129,8 +130,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    </a>
                                     </p>
+                                    </a>
                                     <p th:text="${content.getDescription()}" class="description-content"></p>
                                 </div>
                                 <hr class="m-0">

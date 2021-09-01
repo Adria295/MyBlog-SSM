@@ -24,11 +24,6 @@ public class IndexController {
     @Qualifier("ContentServiceImpl")
     private ContentService contentService;
 
-    @RequestMapping("/admin")
-    public String test() {
-        return "login";
-    }
-
     @RequestMapping("/index")
     public String test2(Model model) {
         List<Content> contentList = contentService.selectAllContent();

@@ -8,4 +8,6 @@ public interface ContentService {
     int insert(Content content);
 
     List<Content> selectAllContent();
+
+    Content findContentBySlugName(String slugName);
 }

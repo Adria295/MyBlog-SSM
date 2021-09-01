@@ -45,4 +45,7 @@
         SELECT * FROM ssmbuild.content
     </select>
 
+    <select id="findContentBySlugName" resultMap="ResultMapWithBLOBs" parameterType="String">
+        SELECT * FROM ssmbuild.content WHERE slug = #{slug}
+    </select>
 </mapper>

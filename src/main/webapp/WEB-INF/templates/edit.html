@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="/plugins/editor.md/css/editormd.min.css">
 
+
     <link rel="stylesheet" type="text/css" href="/plugins/selectize/css/selectize.bootstrap3.css">
 
     <!-- iCheck for checkboxes and radio inputs -->
@@ -125,12 +126,42 @@
                         </div>
 
                         <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group date form_datetime form-group" data-date="" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                    <div class="input-group-prepend">
+                                        <label for="time-content" class="input-group-text">时间</label>
+                                    </div>
+                                    <input type="text"  class="form-control" id="time-content" name="createdTime"
+                                           placeholder="yyyy-mm--dd">
+
+                                </div>
+                                <input type="hidden" name="blogCreatedTime" id="dtp_input1" value="" />
+                            </div>
                         </div>
 
 
                     </div>
 
+
+
                     <div class="row">
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="categoryId" >分类</label>
+
+                                <input type="text" class="form-control" id="categoryID" name="tag">
+
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label for="blogTag">标签</label>
+                            <input type="text" class="form-control" id="blogTag" name="tag">
+                            <!-- /.form-group -->
+                        </div>
 
                         <!-- /.col -->
                         <!-- /.col -->
@@ -210,7 +241,7 @@
 
             <!-- /.card-body -->
             <div id="editormd" class="form-group mb-3">
-                <textarea name="content"></textarea>
+                <textarea name="contentText"></textarea>
             </div>
 
         </form>
@@ -223,13 +254,16 @@
 <script type="text/javascript" src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 
+<script type="text/javascript" src="/js/adminlte.min.js"></script>
+
 <!-- SweetAlert2 -->
 <script type="text/javascript" src="/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
-<script type="text/javascript" src="/js/adminlte.min.js"></script>
 <script type="text/javascript" src="/plugins/editor.md/js/editormd.min.js"></script>
 
 <script type="text/javascript" src="/plugins/selectize/js/standalone/selectize.min.js"></script>
+
+<script type="text/javascript" src="/js/edit.js"></script>
 
 <script type="text/javascript" src="/js/categoryinput.init.js"></script>
 

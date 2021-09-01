@@ -26,6 +26,11 @@ public class ContentServiceImpl implements ContentService{
     public List<Content> selectAllContent() {
         return contentMapper.selectAllContent();
     }
+
+    @Override
+    public Content findContentBySlugName(String slugName) {
+        return contentMapper.findContentBySlugName(slugName);
+    }
 }
 
 

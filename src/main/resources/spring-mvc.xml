@@ -11,7 +11,6 @@
     <!-- 1.开启SpringMVC注解驱动 -->
     <mvc:annotation-driven/>
 
-
     <!-- 2.静态资源默认servlet配置-->
     <mvc:default-servlet-handler/>
 
@@ -47,14 +46,16 @@
     <mvc:resources location="classpath:/img/" mapping="/img/**" />
     <mvc:resources location="classpath:/plugins/" mapping="/plugins/**" />
 
-
+<!--    拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
             <bean class="com.william.Interceptor.MyInterceptor"/>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/goToEditPage/**"/>
+            <bean class="com.william.Interceptor.MyInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
-
-    <mvc:view-controller path="/" view-name="redirect:index"/>
 
 </beans>

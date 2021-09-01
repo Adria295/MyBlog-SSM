@@ -12,16 +12,16 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession httpSession = request.getSession();
 
-//        if (request.getRequestURI().contains("login")){
-//            return true;
-//        }
-//
-//        if (httpSession.getAttribute("userLoinIngo")!=null){
-//            return true;
-//        }
-//
-//        System.out.println("拦截了");
-//        request.getRequestDispatcher("/WEB-INF/templates/login.html").forward(request,response);
+        if (request.getRequestURI().contains("login")){
+            return true;
+        }
+
+        if (httpSession.getAttribute("userLoinIngo")!=null){
+            return true;
+        }
+
+        System.out.println("拦截了");
+        request.getRequestDispatcher("/WEB-INF/templates/login.html").forward(request,response);
         return true;
     }
 

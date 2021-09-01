@@ -1,16 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title >Login</title>
 
-<form action="/user/login" method="post">
-    账号<input type="text" name="username">
-    密码<input type="password" name="password">
-    <input type="submit" value="submit">
-</form>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/css/adminlte.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style type="text/css">
+        .login-logo a, .register-logo a {
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="/index">Blog · Login</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <form method="post" id="loginForm" action="/user/login">
+                <div class="input-group mb-3">
+                    <input type="text" id="userName" name="username" class="form-control" required placeholder="UserName">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" id="password" name="password" class="form-control" required placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="icheck-success float-left">
+                        <input type="checkbox" id="noLogin">
+                        <label for="noLogin">7天免登陆</label>
+                    </div>
+                    <input type="submit" class="btn btn-success btn-block" value="登录">
+                </div>
+            </form>
+
+            <div class="social-auth-links text-center mb-3">
+                <p>- OR -</p>
+                <a href="/register" class="btn btn-block btn-primary">
+                    注册
+                </a>
+            </div>
+            <!-- /.social-auth-links -->
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/js/adminlte.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<script>
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500
+    });
+
+    $('#userName').bind('keydown', function (event) {
+        var event = window.event || arguments.callee.caller.arguments[0];
+        if (event.keyCode == 13){
+            $('#password').focus();
+        }
+    });
+
+    $('#password').bind('keydown', function (event) {
+        var event = window.event || arguments.callee.caller.arguments[0];
+        if (event.keyCode == 13){
+            subForm();
+        }
+    });
+
+    function isNull(str) {
+        return str === null || str === undefined || str.trim() === '';
+    }
+
+    function validateBlogForm() {
+        var userName = $('#userName').val();
+        var password = $('#password').val();
+
+        if (isNull(userName)) {
+            Toast.fire({
+                icon: 'error',
+                title: '请填写用户名哦'
+            });
+            $('#userName').focus();
+            return false;
+        }
+
+        if (isNull(password)) {
+            Toast.fire({
+                icon: 'error',
+                title: '请填写密码哦'
+            });
+            $('#password').focus();
+            return false;
+        }
+        return true;
+    }
+
+    function sleep(numberMillis) {
+        var now = new Date();
+        var exitTime = now.getTime() + numberMillis;
+        while (true) {
+            now = new Date();
+            if (now.getTime() > exitTime)
+                return;
+        }
+    }
+
+</script>
 
 </body>
 </html>

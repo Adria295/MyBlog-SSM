@@ -6,9 +6,5 @@
     <typeAliases>
         <package name="com.william.pojo"/>
     </typeAliases>
-    
-<!--    <mappers>-->
-<!--        <mapper resource="com.wiiliam.mapper"/>-->
-<!--    </mappers>-->
 
 </configuration>

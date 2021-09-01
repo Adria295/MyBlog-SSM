@@ -113,14 +113,14 @@ $(function () {
 			return false;
 		}
 
-		if (isNull(blogCategoryId)) {
-			Toast.fire({
-				icon: 'error',
-				title: '请选择分类'
-			});
-			$('#categoryId').focus();
-			return false;
-		}
+		// if (isNull(blogCategoryId)) {
+		// 	Toast.fire({
+		// 		icon: 'error',
+		// 		title: '请选择分类'
+		// 	});
+		// 	$('#categoryId').focus();
+		// 	return false;
+		// }
 
 		if (isNull(blogDescription)) {
 			Toast.fire({

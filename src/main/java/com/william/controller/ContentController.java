@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
@@ -35,6 +36,14 @@ public class ContentController {
     @RequestMapping("/goToEditPage")
     public String goToEditPage() {
         return "edit";
+    }
+
+
+    @RequestMapping("/articles/{slugName}")
+    public String showContent(Model model, @PathVariable String slugName) {
+        Content content =  contentService.findContentBySlugName(slugName);
+        model.addAttribute("content",content);
+        return "detail";
     }
 
 }

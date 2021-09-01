@@ -40,4 +40,12 @@ public class ContentServiceImplTest {
             System.out.println(content.toString());
         }
     }
+
+    @Test
+    public void selectBySlugName(){
+        Content content = contentService.findContentBySlugName("ioc");
+        System.out.println(content.toString());
+    }
+
+
 }
