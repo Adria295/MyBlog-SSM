@@ -10,4 +10,6 @@ public interface ContentService {
     List<Content> selectAllContent();
 
     Content findContentBySlugName(String slugName);
+
+    int queryNumOfContent();
 }

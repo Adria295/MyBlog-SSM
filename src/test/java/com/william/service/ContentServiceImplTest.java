@@ -1,5 +1,6 @@
 package com.william.service;
 
+import com.github.pagehelper.PageHelper;
 import com.william.pojo.Content;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,5 +48,20 @@ public class ContentServiceImplTest {
         System.out.println(content.toString());
     }
 
+    @Test
+    public void queryNumOfContent(){
+        int num = contentService.queryNumOfContent();
+        System.out.println(num);
+    }
+
+    @Test
+    public void pageHelperTest(){
+        int postsListSize = 1;
+        int pageNum = 1;
+        PageHelper.startPage(pageNum, postsListSize);
+        List<Content> contents = contentService.selectAllContent();
+        long totalPages = PageHelper.count(()->contentService.selectAllContent());
+        totalPages = (totalPages % postsListSize) == 0 ? totalPages/postsListSize : (totalPages/postsListSize) + 1;
+    }
 
 }

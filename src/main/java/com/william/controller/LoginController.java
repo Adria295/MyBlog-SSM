@@ -23,21 +23,15 @@ public class LoginController {
 
     @RequestMapping("/admin")
     public String test() {
-        return "login";
-    }
-
-    @RequestMapping("/main")
-    public String main(){
-        return "main";
+        return "../login";
     }
 
     @RequestMapping("/login")
     public String login(String username, String password, HttpServletRequest request){
-
         if (username.equals("william") && password.equals("1")){
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("userLoinIngo","william");
-            return "redirect:tag";
+            return "redirect:../index";
         }
         return "login";
     }

@@ -57,24 +57,20 @@
                             <p>首页</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="goToEditPage" class="nav-link">
-                            <i class="fa fa-bookmark nav-icon"></i>
-                            <p>创作</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="tag" class="nav-link">
-                            <i class="fa fa-tags nav-icon"></i>
-                            <p>标签</p>
-                        </a>
-                    </li>
 
                     <li class="nav-header">PART 2</li>
                     <li class="nav-item">
                         <a href="archive" class="nav-link">
                             <i class="fa fa-archive nav-icon"></i>
                             <p>归档</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-header">PART 3</li>
+                    <li class="nav-item">
+                        <a href="goToEditPage" class="nav-link">
+                            <i class="fa fa-bookmark nav-icon"></i>
+                            <p>创作</p>
                         </a>
                     </li>
                 </ul>
@@ -95,7 +91,7 @@
                             <div class="card-header">
 
                                 <h3 class="card-title float-right" >
-                                    共 <span class="text-teal text-xl" th:text="18" >?</span> 篇博客
+                                    共 <span class="text-teal text-xl" th:text="${numOfContent}" >?</span> 篇博客
                                 </h3>
                             </div>
 
@@ -136,6 +132,22 @@
                                 </div>
                                 <hr class="m-0">
                             </div>
+                            <div class="card-footer clearfix">
+                                <ul class="pagination m-0 float-right">
+                                    <li class="page-item">
+                                        <a class="page-link" th:if="${currentPage}==1" ><i class="fa fa-angle-left"></i></a>
+                                        <a class="page-link" th:if="${currentPage}!=1" th:href="'/index?pageNum='+(${currentPage}-1)"><i class="fa fa-angle-left" style="color: #9e9e9e"></i></a>
+                                    </li>
+                                    <a th:each="i:${#numbers.sequence(1,numOfPage)}">
+                                        <li class="page-item active" th:if="${currentPage}==i"><a class="page-link" style="user-select: none" th:text="${i}"></a></li>
+                                        <li class="page-item" th:if="${currentPage}!=i"><a class="page-link" th:text="${i}" th:href="'/index?pageNum='+${i}"></a></li>
+                                    </a>
+                                    <li class="page-item">
+                                        <a class="page-link" th:if="${currentPage}!=${numOfPage}" th:href="'/index?pageNum='+(${currentPage}+1)"><i class="fa fa-angle-right"></i></a>
+                                        <a class="page-link" th:if="${currentPage}==${numOfPage}"  style="color: #9e9e9e"><i class="fa fa-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div><!-- /.card-footer -->
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.nav-tabs-custom -->

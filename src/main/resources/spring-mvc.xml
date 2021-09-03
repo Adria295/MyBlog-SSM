@@ -8,19 +8,21 @@
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc
        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!-- 1.开启SpringMVC注解驱动 -->
+    <!-- 1.扫描web相关的bean -->
+    <context:component-scan base-package="com.william.controller"/>
+
+    <!-- 2.开启SpringMVC注解驱动 -->
     <mvc:annotation-driven/>
 
-    <!-- 2.静态资源默认servlet配置-->
+    <!-- 3.静态资源默认servlet配置-->
     <mvc:default-servlet-handler/>
 
-    <!-- 3.配置模板视图解析器 -->
+    <!-- 4.配置模板视图解析器 -->
     <bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
         <!-- html文件所在的目录 -->
         <property name="prefix" value="/WEB-INF/templates/" />
         <!-- 文件的后缀名 -->
         <property name="suffix" value=".html" />
-
         <property name="order" value="1"/>
         <property name="templateMode" value="LEGACYHTML5" />
         <property name="cacheable" value="false" />
@@ -36,17 +38,13 @@
         <property name="characterEncoding"  value="UTF-8" />
     </bean>
 
-    <!-- 4.扫描web相关的bean -->
-    <context:component-scan base-package="com.william.controller"/>
-
-
-    <!-- 设置静态资源不过滤 -->
+    <!--5.设置静态资源不过滤 -->
     <mvc:resources location="classpath:/css/" mapping="/css/**" />
     <mvc:resources location="classpath:/js/" mapping="/js/**" />
     <mvc:resources location="classpath:/img/" mapping="/img/**" />
     <mvc:resources location="classpath:/plugins/" mapping="/plugins/**" />
 
-<!--    拦截器-->
+    <!-- 6.拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
@@ -57,5 +55,4 @@
             <bean class="com.william.Interceptor.MyInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-
 </beans>

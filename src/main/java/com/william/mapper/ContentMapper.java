@@ -11,4 +11,6 @@ public interface ContentMapper {
     List<Content> selectAllContent();
 
     Content findContentBySlugName(String slugName);
+
+    int queryNumOfContent();
 }

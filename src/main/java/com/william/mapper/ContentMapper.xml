@@ -42,10 +42,14 @@
     </insert>
 
     <select id="selectAllContent" resultMap="BaseResultMap">
-        SELECT * FROM ssmbuild.content
+        SELECT * FROM ssmbuild.content ORDER BY created_time DESC
     </select>
 
     <select id="findContentBySlugName" resultMap="ResultMapWithBLOBs" parameterType="String">
         SELECT * FROM ssmbuild.content WHERE slug = #{slug}
+    </select>
+
+    <select id="queryNumOfContent" resultType="int">
+    SELECT COUNT(content.cid) FROM content
     </select>
 </mapper>

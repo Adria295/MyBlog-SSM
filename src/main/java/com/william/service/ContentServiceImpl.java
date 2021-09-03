@@ -31,6 +31,11 @@ public class ContentServiceImpl implements ContentService{
     public Content findContentBySlugName(String slugName) {
         return contentMapper.findContentBySlugName(slugName);
     }
+
+    @Override
+    public int queryNumOfContent() {
+        return contentMapper.queryNumOfContent();
+    }
 }
 
 
