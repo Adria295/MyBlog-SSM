@@ -52,4 +52,8 @@
     <select id="queryNumOfContent" resultType="int">
     SELECT COUNT(content.cid) FROM content
     </select>
+
+    <update id="updateArticleViewsBySlugName" parameterType="String">
+        UPDATE content SET  views = views + 1 WHERE slug = #{slug}
+    </update>
 </mapper>

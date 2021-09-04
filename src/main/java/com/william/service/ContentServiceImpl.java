@@ -36,6 +36,11 @@ public class ContentServiceImpl implements ContentService{
     public int queryNumOfContent() {
         return contentMapper.queryNumOfContent();
     }
+
+    @Override
+    public int updateArticleViewsBySlugName(String slugName) {
+        return contentMapper.updateArticleViewsBySlugName(slugName);
+    }
 }
 
 

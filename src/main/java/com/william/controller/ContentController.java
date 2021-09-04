@@ -42,6 +42,7 @@ public class ContentController {
     @RequestMapping("/articles/{slugName}")
     public String showContent(Model model, @PathVariable String slugName) {
         Content content =  contentService.findContentBySlugName(slugName);
+        contentService.updateArticleViewsBySlugName(slugName);
         model.addAttribute("content",content);
         return "detail";
     }

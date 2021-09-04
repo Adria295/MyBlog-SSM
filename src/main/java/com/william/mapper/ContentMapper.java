@@ -13,4 +13,6 @@ public interface ContentMapper {
     Content findContentBySlugName(String slugName);
 
     int queryNumOfContent();
+
+    int updateArticleViewsBySlugName(String slugName);
 }

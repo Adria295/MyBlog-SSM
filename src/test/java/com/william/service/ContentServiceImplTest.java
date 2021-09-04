@@ -64,4 +64,9 @@ public class ContentServiceImplTest {
         totalPages = (totalPages % postsListSize) == 0 ? totalPages/postsListSize : (totalPages/postsListSize) + 1;
     }
 
+    @Test
+    public void updateArticleViewsBySlugName(){
+        contentService.updateArticleViewsBySlugName("mybatis");
+    }
+
 }

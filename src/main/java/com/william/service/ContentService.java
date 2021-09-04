@@ -12,4 +12,6 @@ public interface ContentService {
     Content findContentBySlugName(String slugName);
 
     int queryNumOfContent();
+
+    int updateArticleViewsBySlugName(String slugName);
 }
